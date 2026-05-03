@@ -1,0 +1,184 @@
+.pf2e-encounter-generator-launch {
+  margin-bottom: 6px;
+}
+
+.pf2e-encounter-generator .window-content {
+  background: linear-gradient(180deg, rgba(21, 24, 28, 0.98), rgba(31, 31, 27, 0.98));
+  color: #f4f0e6;
+}
+
+.pf2e-encounter-generator form {
+  display: grid;
+  gap: 16px;
+}
+
+.pf2e-encounter-generator,
+.pf2e-encounter-generator label,
+.pf2e-encounter-generator h3,
+.pf2e-encounter-generator .hint,
+.pf2e-encounter-generator .checkbox,
+.pf2e-encounter-generator button,
+.pf2e-encounter-generator input,
+.pf2e-encounter-generator select {
+  color: #f4f0e6;
+}
+
+.pf2e-encounter-generator input,
+.pf2e-encounter-generator select {
+  background: rgba(255, 250, 235, 0.08);
+  border: 1px solid rgba(180, 163, 118, 0.45);
+}
+
+.pf2e-encounter-generator .encounter-grid {
+  display: grid;
+  gap: 16px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.pf2e-encounter-generator .full-width {
+  grid-column: 1 / -1;
+}
+
+.pf2e-encounter-generator .field-group {
+  border: 1px solid rgba(180, 163, 118, 0.35);
+  border-radius: 8px;
+  padding: 12px;
+  background: rgba(7, 9, 9, 0.35);
+}
+
+.pf2e-encounter-generator .field-group h3 {
+  margin: 0 0 8px;
+  font-size: 16px;
+}
+
+.pf2e-encounter-generator .field-row,
+.pf2e-encounter-generator .checkbox-grid {
+  display: grid;
+  gap: 8px 12px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.pf2e-encounter-generator .form-actions {
+  display: flex;
+  gap: 8px;
+  justify-content: flex-end;
+}
+
+.pf2e-encounter-generator .trait-picker {
+  display: grid;
+  gap: 8px;
+}
+
+.pf2e-encounter-generator .source-picker {
+  display: grid;
+  gap: 8px;
+  margin-top: 10px;
+}
+
+.pf2e-encounter-generator .source-picker-header {
+  display: grid;
+  gap: 8px;
+  grid-template-columns: minmax(180px, max-content) minmax(0, 1fr);
+  align-items: center;
+}
+
+.pf2e-encounter-generator .source-options {
+  display: grid;
+  gap: 4px 12px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  max-height: 180px;
+  overflow: auto;
+  padding: 6px;
+  border: 1px solid rgba(180, 163, 118, 0.28);
+  border-radius: 6px;
+  background: rgba(0, 0, 0, 0.18);
+}
+
+.pf2e-encounter-generator .trait-picker-input {
+  display: grid;
+  gap: 8px;
+  grid-template-columns: minmax(0, 1fr) 40px;
+  align-items: center;
+}
+
+.pf2e-encounter-generator .trait-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  min-height: 28px;
+}
+
+.pf2e-encounter-generator .trait-chip {
+  display: inline-flex;
+  gap: 6px;
+  align-items: center;
+  width: auto;
+  border: 1px solid rgba(180, 163, 118, 0.55);
+  border-radius: 999px;
+  padding: 3px 8px;
+  background: rgba(180, 163, 118, 0.18);
+}
+
+.pf2e-encounter-generator .trait-chip select {
+  width: 58px;
+  height: 24px;
+  padding: 0 4px;
+  font-size: 11px;
+}
+
+.pf2e-encounter-generator .trait-chip button {
+  display: inline-flex;
+  gap: 6px;
+  align-items: center;
+  width: auto;
+  min-height: 24px;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+}
+
+.pf2e-encounter-generator .hint {
+  margin-top: 4px;
+  font-size: 12px;
+  opacity: 0.8;
+}
+
+.pf2e-encounter-generator-chat ol {
+  display: grid;
+  gap: 6px;
+  margin: 8px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.pf2e-encounter-generator-chat li {
+  display: grid;
+  gap: 8px;
+  grid-template-columns: 36px minmax(0, 1fr);
+  align-items: center;
+}
+
+.pf2e-encounter-generator-chat img {
+  width: 36px;
+  height: 36px;
+  object-fit: cover;
+  border: 1px solid rgba(0, 0, 0, 0.35);
+  border-radius: 4px;
+}
+
+.pf2e-encounter-generator-chat span {
+  display: block;
+  font-size: 12px;
+  opacity: 0.8;
+}
+
+@media (max-width: 680px) {
+  .pf2e-encounter-generator .encounter-grid,
+  .pf2e-encounter-generator .field-row,
+  .pf2e-encounter-generator .checkbox-grid,
+  .pf2e-encounter-generator .source-picker-header,
+  .pf2e-encounter-generator .source-options {
+    grid-template-columns: 1fr;
+  }
+}

@@ -1,0 +1,172 @@
+<form autocomplete="off">
+  <div class="encounter-grid">
+    <div class="field-group full-width">
+      <h3>{{localize "PF2EEncounterGenerator.Form.Party"}}</h3>
+      <div class="field-row">
+        <div class="form-group full-width">
+          <label>{{localize "PF2EEncounterGenerator.Form.EncounterName"}}</label>
+          <input type="text" name="encounterName" value="{{defaults.encounterName}}" placeholder="{{defaultEncounterName}}" />
+        </div>
+        <div class="form-group">
+          <label>{{localize "PF2EEncounterGenerator.Form.PartyLevel"}}</label>
+          <input type="number" name="partyLevel" value="{{defaults.partyLevel}}" min="1" max="25" />
+        </div>
+        <div class="form-group">
+          <label>{{localize "PF2EEncounterGenerator.Form.PartySize"}}</label>
+          <input type="number" name="partySize" value="{{defaults.partySize}}" min="1" max="12" />
+        </div>
+        <div class="form-group">
+          <label>{{localize "PF2EEncounterGenerator.Form.Threat"}}</label>
+          <select name="threat">
+            {{#each threats}}
+              <option value="{{this.value}}" {{#if this.selected}}selected{{/if}}>{{this.label}}</option>
+            {{/each}}
+          </select>
+        </div>
+        <div class="form-group">
+          <label>{{localize "PF2EEncounterGenerator.Form.Composition"}}</label>
+          <select name="quickGroup">
+            {{#each quickGroups}}
+              <option value="{{this.value}}" data-threat="{{this.threat}}" {{#if this.selected}}selected{{/if}}>{{this.label}}</option>
+            {{/each}}
+          </select>
+        </div>
+        <div class="form-group">
+          <label>{{localize "PF2EEncounterGenerator.Form.MaxEntries"}}</label>
+          <input type="number" name="maxEntries" value="{{defaults.maxEntries}}" min="1" max="20" />
+        </div>
+      </div>
+      <p class="hint" data-budget-label>{{budgetLabel}}</p>
+      <p class="hint">{{localize "PF2EEncounterGenerator.Form.RulesHint"}}</p>
+    </div>
+
+    <div class="field-group full-width">
+      <h3>{{localize "PF2EEncounterGenerator.Form.Sources"}}</h3>
+      <div class="checkbox-grid">
+        <label class="checkbox">
+          <input type="checkbox" name="includeCreatures" {{checked defaults.includeCreatures}} />
+          {{localize "PF2EEncounterGenerator.Form.IncludeCreatures"}}
+        </label>
+        <label class="checkbox">
+          <input type="checkbox" name="includeHazards" {{checked defaults.includeHazards}} />
+          {{localize "PF2EEncounterGenerator.Form.IncludeHazards"}}
+        </label>
+      </div>
+      <div class="source-picker">
+        <input type="hidden" name="sourceFilterActive" value="true" />
+        <div class="source-picker-header">
+          <label class="checkbox">
+            <input type="checkbox" data-action="toggle-visible-sources" />
+            {{localize "PF2EEncounterGenerator.Form.ToggleVisibleSources"}}
+          </label>
+          <input type="search" data-source-search placeholder="{{localize "PF2EEncounterGenerator.Form.SearchSources"}}" autocomplete="off" />
+        </div>
+        <div class="source-options">
+          {{#each sourceOptions}}
+            <label class="checkbox" data-source-option data-name="{{this.name}}">
+              <input type="checkbox" name="sources" value="{{this.slug}}" {{checked this.checked}} />
+              {{this.name}}
+            </label>
+          {{/each}}
+        </div>
+      </div>
+    </div>
+
+    <div class="field-group">
+      <h3>{{localize "PF2EEncounterGenerator.Form.Rarity"}}</h3>
+      <div class="checkbox-grid">
+        <label class="checkbox">
+          <input type="checkbox" checked disabled />
+          {{localize "PF2EEncounterGenerator.Form.AllowCommon"}}
+        </label>
+        <label class="checkbox">
+          <input type="checkbox" name="allowUncommon" {{checked defaults.allowUncommon}} />
+          {{localize "PF2EEncounterGenerator.Form.AllowUncommon"}}
+        </label>
+        <label class="checkbox">
+          <input type="checkbox" name="allowRare" {{checked defaults.allowRare}} />
+          {{localize "PF2EEncounterGenerator.Form.AllowRare"}}
+        </label>
+        <label class="checkbox">
+          <input type="checkbox" name="allowUnique" {{checked defaults.allowUnique}} />
+          {{localize "PF2EEncounterGenerator.Form.AllowUnique"}}
+        </label>
+      </div>
+    </div>
+
+    <div class="field-group full-width">
+      <h3>{{localize "PF2EEncounterGenerator.Form.LevelRange"}}</h3>
+      <div class="field-row">
+        <div class="form-group">
+          <label>{{localize "PF2EEncounterGenerator.Form.MinLevelOffset"}}</label>
+          <input type="number" name="minLevelOffset" value="{{defaults.minLevelOffset}}" min="-4" max="4" />
+        </div>
+        <div class="form-group">
+          <label>{{localize "PF2EEncounterGenerator.Form.MaxLevelOffset"}}</label>
+          <input type="number" name="maxLevelOffset" value="{{defaults.maxLevelOffset}}" min="-4" max="4" />
+        </div>
+      </div>
+      <p class="hint">{{localize "PF2EEncounterGenerator.Form.LevelRangeHint"}}</p>
+    </div>
+
+    <div class="field-group full-width">
+      <h3>{{localize "PF2EEncounterGenerator.Form.Filters"}}</h3>
+      <div class="form-group">
+        <label>{{localize "PF2EEncounterGenerator.Form.Environment"}}</label>
+        <select name="environment">
+          {{#each environments}}
+            <option value="{{this.value}}" {{#if this.selected}}selected{{/if}}>{{this.label}}</option>
+          {{/each}}
+        </select>
+        <p class="hint">{{localize "PF2EEncounterGenerator.Form.EnvironmentHint"}}</p>
+      </div>
+      <div class="form-group">
+        <label>{{localize "PF2EEncounterGenerator.Form.Traits"}}</label>
+        <input type="hidden" name="traits" value="{{defaults.traits}}" data-traits-value />
+        <div class="trait-picker">
+          <div class="trait-picker-input">
+            <input type="search" list="pf2e-encounter-generator-traits" data-trait-search autocomplete="off" />
+            <button type="button" data-action="add-trait">
+              <i class="fas fa-plus"></i>
+            </button>
+          </div>
+          <datalist id="pf2e-encounter-generator-traits">
+            {{#each traitOptions}}
+              <option value="{{this.value}}" label="{{this.label}}"></option>
+            {{/each}}
+          </datalist>
+          <div class="trait-chips" data-trait-chips>
+            {{#each selectedTraits}}
+              <div class="trait-chip" data-trait="{{this.value}}">
+                {{#if this.showOperator}}
+                  <select data-trait-operator data-trait="{{this.value}}">
+                    <option value="and" {{#if this.andOperator}}selected{{/if}}>{{localize "PF2EEncounterGenerator.Form.TraitAnd"}}</option>
+                    <option value="or" {{#if this.orOperator}}selected{{/if}}>{{localize "PF2EEncounterGenerator.Form.TraitOr"}}</option>
+                  </select>
+                {{/if}}
+                <button type="button" data-trait="{{this.value}}">
+                  <span>{{this.label}}</span>
+                  <i class="fas fa-times"></i>
+                </button>
+              </div>
+            {{/each}}
+          </div>
+        </div>
+        <p class="hint">{{localize "PF2EEncounterGenerator.Form.TraitsHint"}}</p>
+      </div>
+      <div class="form-group">
+        <label>{{localize "PF2EEncounterGenerator.Form.Labels"}}</label>
+        <input type="text" name="labels" value="{{defaults.labels}}" />
+        <p class="hint">{{localize "PF2EEncounterGenerator.Form.LabelsHint"}}</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-actions">
+    <button type="button" data-action="cancel">{{localize "PF2EEncounterGenerator.Form.Cancel"}}</button>
+    <button type="submit">
+      <i class="fas fa-dice-d20"></i>
+      {{localize "PF2EEncounterGenerator.Form.Submit"}}
+    </button>
+  </div>
+</form>

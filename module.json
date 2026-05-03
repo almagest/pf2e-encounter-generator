@@ -1,0 +1,46 @@
+{
+  "id": "pf2e-encounter-generator",
+  "title": "PF2E Encounter Generator",
+  "description": "Generate Pathfinder Second Edition encounters from PF2E compendium creatures and hazards using the encounter XP budget rules.",
+  "version": "0.1.0",
+  "url": "https://github.com/almagest/pf2e-encounter-generator",
+  "manifest": "https://github.com/almagest/pf2e-encounter-generator/releases/latest/download/module.json",
+  "download": "https://github.com/almagest/pf2e-encounter-generator/releases/download/0.1.0/pf2e-encounter-generator.zip",
+  "readme": "https://github.com/almagest/pf2e-encounter-generator/blob/main/README.md",
+  "bugs": "https://github.com/almagest/pf2e-encounter-generator/issues",
+  "authors": [
+    {
+      "name": "Almagest"
+    }
+  ],
+  "compatibility": {
+    "minimum": "13.348",
+    "verified": "13.351",
+    "maximum": "13"
+  },
+  "esmodules": [
+    "scripts/main.js",
+    "scripts/encounter-generator-form.js"
+  ],
+  "styles": [
+    "styles/encounter-generator.css"
+  ],
+  "languages": [
+    {
+      "lang": "en",
+      "name": "English",
+      "path": "lang/en.json"
+    }
+  ],
+  "relationships": {
+    "systems": [
+      {
+        "id": "pf2e",
+        "type": "system",
+        "compatibility": {
+          "minimum": "7.8.0"
+        }
+      }
+    ]
+  }
+}
